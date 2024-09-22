@@ -1,0 +1,55 @@
+services: 
+  # Backend
+  backend: 
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend
+    ports: 
+      - "3000:3000"
+    volumes: 
+      - ./backend:/app
+    depends_on: 
+      - postgres
+      - rabbitmq
+    networks:
+      - default-network
+  
+  # Postgres
+  postgres:
+    build: 
+      context: ./postgres
+      dockerfile: Dockerfile
+    restart: always
+    container_name: postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-guest}      
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-guest}
+      POSTGRES_DB: ${POSTGRES_DB:-postgres}
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres/data:/var/lib/postgresql/data
+    networks:
+      - default-network
+
+  # RabbitMQ
+  rabbitmq:
+    build: 
+      context: ./rabbitmq
+      dockerfile: Dockerfile
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"  # Porta padrão do RabbitMQ para conexões
+      - "15672:15672" # Porta para acessar o painel de gerenciamento do RabbitMQ
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER:-guest}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS:-guest}
+    volumes:
+      - ./rabbitmq/data:/var/lib/rabbitmq
+    networks:
+      - default-network
+
+networks:
+  default-network:
+    driver: bridge
