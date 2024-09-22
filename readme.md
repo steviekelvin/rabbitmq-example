@@ -34,3 +34,12 @@ o log é um booleano para mostrar ou não os logs no console
 ## Teste
 
 Para teste esta sendo usado o Vitest, que pode ser executado dentro do projeto backend com o comando `npm run test` 
+
+
+
+
+
+
+![image](https://github.com/user-attachments/assets/32c359b3-531d-4eba-9b24-eade9fc900e0)
+![image](https://github.com/user-attachments/assets/db534818-4e99-4547-8a18-8f97c5e93066)
+
