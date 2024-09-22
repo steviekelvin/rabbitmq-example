@@ -42,4 +42,6 @@ Para teste esta sendo usado o Vitest, que pode ser executado dentro do projeto b
 
 ![image](https://github.com/user-attachments/assets/32c359b3-531d-4eba-9b24-eade9fc900e0)
 ![image](https://github.com/user-attachments/assets/db534818-4e99-4547-8a18-8f97c5e93066)
+![image](https://github.com/user-attachments/assets/c19cba5c-d72e-4762-9d67-bcee3f797e41)
+
 
